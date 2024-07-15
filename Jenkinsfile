@@ -3,7 +3,7 @@ pipeline{
         label 'AGENT-1'
     }
     options{
-        timeout(time: 2, unit: 'SECOND')
+        timeout(time: 2, unit: 'MINUTES')
     }
     parameters{
         choice(name: 'CHOICE', choices: ['apply', 'destroy', ], description: 'Pick something')
