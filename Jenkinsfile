@@ -12,13 +12,13 @@ pipeline{
     // }
 
     stages {  
-        stage('init list out the file ') {
-            steps {
-                sh"""
-                ls -ltr
-                """
-            }
-        }
+        // stage('init list out the file ') {
+        //     steps {
+        //         sh"""
+        //         ls -ltr
+        //         """
+        //     }
+        // }
         stage('instll dependencies ') { // This stage should be inside the 'stages' block
         steps {
             sh"""
