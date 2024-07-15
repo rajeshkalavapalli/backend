@@ -12,10 +12,20 @@ pipeline{
     }
 
     stages {
-        stage('init') {
+        stage('init list out the file ') {
             steps {
                 sh"""
                 ls -ltr
+                """
+            }
+        }
+        
+    }
+      stages {
+        stage('install dependnces') {
+            steps {
+                sh"""
+                npm install 
                 """
             }
         }
