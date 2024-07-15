@@ -13,9 +13,9 @@ pipeline{
     stages{
         stage('read the version'){
             steps{
-               def packageJson = readJSON file: 'package.json'
-               def appVersion= packageJson.version
-               echo "application version is: $appVersion"
+            def packageJson = readJSON file: 'package.json'
+            def appVersion= packageJson.version
+            echo "application version is: $appVersion"
             }
         }
        stage('installing dependency') {
