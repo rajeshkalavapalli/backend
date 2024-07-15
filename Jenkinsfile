@@ -33,11 +33,20 @@ pipeline{
                """
             }
         }
+        stage('build') {
+            steps {
+               sh """
+                zip -r backend-${appVersion}.zip * -x jenkinsfile -x backend-${appVersion}.zip
+                ls -ltr
+               """
+            }
+        }
+    }
     }
     post{
         always{
             echo "when pipline useing "
-            // deleteDir()
+            deleteDir()
         }
          success{
             echo "when pipeline sucess"
