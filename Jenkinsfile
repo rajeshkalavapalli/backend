@@ -13,10 +13,12 @@ pipeline{
     stages{
         stage('read the version'){
             steps{
-                // The following lines should be inside a script block
-                def packageJson = readJSON file: 'package.json'
-                def appVersion= packageJson.version
-                echo "application version is: $appVersion"
+                script{
+                    def packageJson = readJSON file: 'package.json'
+                    def appVersion= packageJson.version
+                    echo "application version is: $appVersion"
+                }
+                
             }
         }
        stage('installing dependency') {
@@ -48,4 +50,4 @@ pipeline{
             echo "when pipeline faild "
         }
     }
-} // Missing closing brace for the pipeline block
+} 
