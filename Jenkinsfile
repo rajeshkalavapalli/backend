@@ -18,26 +18,19 @@ pipeline{
             steps{
                 script{
                     def packageJson = readJSON file: 'package.json'
-                    appVersion= packageJson.version
-                    echo "application version is: $appVersion"
+                    appVersion = packageJson.version
+                    echo "application version: $appVersion"
                 }
                 
             }
         }
-       stage('installing dependency') {
-            steps{
-                sh """
-                npm install 
-                """
-            }
-        }
-       stage('list') {
-            steps{
-                sh """
+       stage('Install Dependencies') {
+            steps {
+               sh """
+                npm install
                 ls -ltr
-                // The following line won't work as appVersion is not accessible in this shell script
-                echo "application version is: $appVersion"
-                """
+                echo "application version: $appVersion"
+               """
             }
         }
     }
