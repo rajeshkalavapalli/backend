@@ -7,11 +7,11 @@ pipeline{
         ansiColor('xterm')
         disableConcurrentBuilds()
     }
-    parameters{
-        choice(name: 'CHOICE', choices: ['apply', 'destroy', ], description: 'Pick something')
-    }
+    // parameters{
+    //     choice(name: 'CHOICE', choices: ['apply', 'destroy', ], description: 'Pick something')
+    // }
 
-    stages {
+    stages {  
         stage('init list out the file ') {
             steps {
                 sh"""
@@ -20,15 +20,16 @@ pipeline{
             }
         }
         
-    }
-    stage('init list out the file ') {
-            steps {
-                sh"""
-                npm install 
-                """
-            }
+    } 
+
+    stage('init list out the file ') { // This stage should be inside the 'stages' block
+        steps {
+            sh"""
+            npm install 
+            """
         }
-     
+    }
+
     post {
         always{
            echo " ill alls run"
