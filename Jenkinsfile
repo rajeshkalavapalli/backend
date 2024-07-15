@@ -37,7 +37,7 @@ pipeline{
             steps {
                sh """
                 zip backend-${appVersion}.zip * -x jenkinsfile -x backend-${appVersion}.zip
-                ls-ltr
+                ls -ltr
                """
             }
         }
