@@ -11,6 +11,13 @@ pipeline{
     //     choice(name: 'action', choices: ['apply', 'destroy', ], description: 'apply or destriy to view the changes')
     // }
     stages{
+        stage('read the version'){
+            steps{
+               def packageJson = readJSON file: 'package.json'
+               def appVersion= packageJson.version
+               echo "application version is: $appVersion"
+            }
+        }
        stage('installing dependency') {
             steps{
                 sh """
@@ -22,6 +29,7 @@ pipeline{
             steps{
                 sh """
                 ls -ltr
+                echo "application version is: $appVersion"
                 """
             }
         }
