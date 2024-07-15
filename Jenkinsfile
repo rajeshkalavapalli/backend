@@ -13,9 +13,10 @@ pipeline{
     stages{
         stage('read the version'){
             steps{
-            def packageJson = readJSON file: 'package.json'
-            def appVersion= packageJson.version
-            echo "application version is: $appVersion"
+                // The following lines should be inside a script block
+                def packageJson = readJSON file: 'package.json'
+                def appVersion= packageJson.version
+                echo "application version is: $appVersion"
             }
         }
        stage('installing dependency') {
@@ -29,11 +30,11 @@ pipeline{
             steps{
                 sh """
                 ls -ltr
+                // The following line won't work as appVersion is not accessible in this shell script
                 echo "application version is: $appVersion"
                 """
             }
         }
-         
     }
     post{
         always{
@@ -47,6 +48,4 @@ pipeline{
             echo "when pipeline faild "
         }
     }
-    
-    
-}
+} // Missing closing brace for the pipeline block
