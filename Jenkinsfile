@@ -19,17 +19,16 @@ pipeline{
                 """
             }
         }
-        
-    } 
-
-    stage('init list out the file ') { // This stage should be inside the 'stages' block
+        stage('instll dependencies ') { // This stage should be inside the 'stages' block
         steps {
             sh"""
             npm install 
             """
         }
     }
-
+        
+    } 
+    
     post {
         always{
            echo " ill alls run"
