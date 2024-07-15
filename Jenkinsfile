@@ -33,7 +33,7 @@ pipeline{
                """
             }
         }
-        stage('Install Dependencies') {
+        stage('build') {
             steps {
                sh """
                 zip backend-${appVersion}.zip * -x jenkinsfile -x backend-${appVersion}.zip
