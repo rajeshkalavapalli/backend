@@ -14,7 +14,7 @@ pipeline{
     stages {
         stage('init') {
             steps {
-                echo "trail"
+                ls -ltr
             }
         }
         
