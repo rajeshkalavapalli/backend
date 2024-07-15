@@ -25,6 +25,14 @@ pipeline{
             npm install 
             """
         }
+
+        stage('init list out the file ') {
+            steps {
+                sh"""
+                ls -ltr
+                """
+            }
+        }
     }
         
     } 
