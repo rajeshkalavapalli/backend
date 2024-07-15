@@ -5,6 +5,7 @@ pipeline{
     options{
         timeout(time: 2, unit: 'MINUTES')
         ansiColor('xterm')
+        disableConcurrentBuilds()
     }
     parameters{
         choice(name: 'CHOICE', choices: ['apply', 'destroy', ], description: 'Pick something')
@@ -16,21 +17,7 @@ pipeline{
                 echo "trail"
             }
         }
-        stage('plan') {
-            steps {
-                echo "trail"
-            }
-        }
-        stage('apply') {
-            steps {
-                echo "trail"
-            }
-        }
-        stage('deploy') {
-            steps {
-                echo "trail"
-            }
-        }
+        
     }
 
     post {
