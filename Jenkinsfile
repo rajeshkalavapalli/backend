@@ -37,7 +37,7 @@ pipeline{
     post{
         always{
             echo "when pipline useing "
-            deleteDir()
+            // deleteDir()
         }
          success{
             echo "when pipeline sucess"
