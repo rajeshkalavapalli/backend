@@ -7,71 +7,25 @@ pipeline{
         disableConcurrentBuilds()
         ansiColor('xterm')
     }
-    parameters{
-        choice(name: 'action', choices: ['apply', 'destroy', ], description: 'apply or destriy to view the changes')
-    }
+    // parameters{
+    //     choice(name: 'action', choices: ['apply', 'destroy', ], description: 'apply or destriy to view the changes')
+    // }
     stages{
-        stage('list') {
+       stage('installing dependency') {
+            steps{
+                sh """
+                npm install 
+                """
+            }
+        }
+       stage('list') {
             steps{
                 sh """
                 ls -ltr
                 """
             }
         }
-        stage('init') {
-            steps{
-               sh"""
-                cd 01-vpc
-                terraform init -upgrade                           
-               """
-            }
-        }
-        stage('plan') {
-            when{
-                expression{
-                    params.action == 'apply'
-                }
-            }
-            steps{
-                sh"""
-                cd 01-vpc
-                terraform plan       
-                """
-            }
-        }
-        stage('deploy') {
-            when{
-                expression{
-                    params.action == 'apply'
-                }
-            } 
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-            }
-            steps{
-                sh"""
-                    cd 01-vpc
-                    tarraform apply -auto-approve
-                    
-                """
-            }
-        }
-        
-         stage('destroy') {
-            when{
-                expression{
-                    params.action == 'destroy'
-                }
-            }
-            steps{
-                sh"""
-                    cd 01-vpc
-                    terraform destroy -auto-approve
-                    
-                """
-            }
-        }
+         
     }
     post{
         always{
