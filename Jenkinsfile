@@ -33,15 +33,15 @@ pipeline{
                """
             }
         }
-        stage('build') {
+        stage('Install Dependencies') {
             steps {
                sh """
-                zip -r backend-${appVersion}.zip * -x jenkinsfile -x backend-${appVersion}.zip
-                ls -ltr
+                zip backend-${appVersion}.zip * -x jenkinsfile -x backend-${appVersion}.zip
+                ls-ltr
                """
             }
         }
-    }
+        
     }
     post{
         always{
