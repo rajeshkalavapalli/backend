@@ -29,8 +29,6 @@ pipeline{
             }
         }
      
-    }
-
     post {
         always{
            echo " ill alls run"
