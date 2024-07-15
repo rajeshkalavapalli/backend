@@ -21,15 +21,14 @@ pipeline{
         }
         
     }
-      stages {
-        stage('install dependnces') {
+    stage('init list out the file ') {
             steps {
                 sh"""
                 npm install 
                 """
             }
         }
-        
+     
     }
 
     post {
