@@ -56,7 +56,7 @@ pipeline{
                         artifacts: [
                             [artifactId: "backend",
                             classifier: '',
-                            file: "backend" + "${appVersion}" + '.zip',
+                            file: "backend" + "-${appVersion}" + '.zip',
                             type: 'zip']
                         ]
                     )
