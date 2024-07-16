@@ -9,7 +9,7 @@ pipeline{
     }
     environment{
         def appVersion = ''
-        nexusUrl='http://54.235.229.243:8081'
+        nexusUrl='http://54.235.229.243:8081/repository/backend/'
     }
     // parameters{
     //     choice(name: 'action', choices: ['apply', 'destroy', ], description: 'apply or destriy to view the changes')
@@ -52,11 +52,11 @@ pipeline{
                         groupId: 'com.expense',
                         version: "${appVersion}",
                         repository: 'backend',
-                        credentialsId: 'nexus_access',
+                        credentialsId: 'nexus-pass',
                         artifacts: [
                             [artifactId: "backend",
                             classifier: '',
-                            file: "backend" + "-${appVersion}" + '.zip',
+                            file: "backend-" + "${appVersion}" + '.zip',
                             type: 'zip']
                         ]
                     )
