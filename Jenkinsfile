@@ -9,6 +9,7 @@ pipeline{
     }
     environment{
         def appVersion = ''
+        nexusUrl='http://54.235.229.243:8081/repository/backend/'
     }
     // parameters{
     //     choice(name: 'action', choices: ['apply', 'destroy', ], description: 'apply or destriy to view the changes')
@@ -41,7 +42,27 @@ pipeline{
                """
             }
         }
-        
+        stage('nexus artifact uploding') {
+            steps {
+               script{
+                 nexusArtifactUploader(
+                        nexusVersion: 'nexus3',
+                        protocol: 'http',
+                        nexusUrl: "${nexusUrl}",
+                        groupId: 'com.expense',
+                        version: "${appVersion}",
+                        repository: 'backend',
+                        credentialsId: 'nexus_access',
+                        artifacts: [
+                            [artifactId: "backend",
+                            classifier: '',
+                            file: "backend" + "${appVersion}" + '.zip',
+                            type: 'zip']
+                        ]
+                    )
+               }
+            }
+        }
     }
     post{
         always{
