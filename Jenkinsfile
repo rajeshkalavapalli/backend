@@ -32,8 +32,7 @@ pipeline{
                 echo "application version: $appVersion"
                """
             }
-        }
-        
+        }  
         stage('build') {
             steps {
                sh """
