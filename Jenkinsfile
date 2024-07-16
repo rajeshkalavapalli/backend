@@ -65,6 +65,18 @@ pipeline{
                 }
             }
         }
+        stage('deploye'){
+            steps{
+                dnf params =[
+                    string(name: 'appVersion', value: "${appVersion}")
+                ]
+                script{
+                   
+                    build job: 'backend-deploye', parameters: params, wait:false
+                }
+            }
+        
+        }
     }
     post{
         always{
