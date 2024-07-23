@@ -9,7 +9,7 @@ pipeline{
     }
     environment{
         def appVersion = ''
-        def nexusUrl='54.235.229.243:8081/repository/backend'
+        def nexusUrl='44.202.115.103:8081/repository/backend'
     }
     // parameters{
     //     choice(name: 'action', choices: ['apply', 'destroy', ], description: 'apply or destriy to view the changes')
